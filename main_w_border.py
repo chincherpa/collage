@@ -172,9 +172,10 @@ def main(
             y = 0
 
     rand_num = random.randint(1000, 9999)
-    resultImage = os.path.join(currentPath, "collage_" + str(cols) + "_" + str(rows) + "_"
-        + str(ratio).replace("/", "x") + "_" + str(spaceColor) + "_" + str(spaces) + "_" + sborder
-        + "_" + sborder_color + "_" + str(iborder) + "_" + ("squared" if squared else "nope") + "_" + str(rand_num) + ".jpg")
+    resultImage = os.path.join(currentPath, "collage_" + str(cols) + "_" + str(rows) + "_" +
+                               str(ratio).replace("/", "x") + "_" + str(spaceColor) + "_" + str(spaces) +
+                               "_" + sborder + "_" + sborder_color + "_" + str(iborder) +
+                               "_" + ("squared" if squared else "nope") + "_" + str(rand_num) + ".jpg")
     new_im.save(resultImage)
     return resultImage
 
