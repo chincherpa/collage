@@ -3,19 +3,19 @@ import random
 from PIL import Image
 
 currentPath = os.path.dirname(__file__)
-imageFolder = os.path.join(currentPath, 'images')
-resultImage = os.path.join(currentPath, 'collage.jpg')
-imageFolderVariations = 'image_variation_collages'
+imageFolder = os.path.join(currentPath, "images")
+resultImage = os.path.join(currentPath, "collage.jpg")
+imageFolderVariations = "image_variation_collages"
 
 outerFrame = True
-cols = int(input("How many columns?:\t"))  #4
-rows = int(input("How many rows?:\t"))  #5
-space = int(input("How much space between?:\t"))  #50
+cols = int(input("How many columns?:\t"))
+rows = int(input("How many rows?:\t"))
+space = int(input("How much space between?:\t"))
 
 Colors = {
-    "w" : (255, 255, 255),  # white
-    "b" : (0, 0, 0),  # black
-    "p" : (193, 0, 207)  # pink
+    "w": (255, 255, 255),  # white
+    "b": (0, 0, 0),  # black
+    "p": (193, 0, 207),  # pink
 }
 
 Color_choice = input("Space: [b]lack or [w]hite or [p]ink?:\t")
@@ -23,12 +23,12 @@ spaceColor = Colors[Color_choice.lower()]
 
 position_original_choice = input("Original image: [f]irst or [l]ast?:\t")
 
-position_original_first = (position_original_choice.lower() == 'f')
+position_original_first = position_original_choice.lower() == "f"
 
 imageList = []
 for root, directories, files in os.walk(imageFolder):
     for file_ in files:
-        if file_.endswith('jpg'):
+        if file_.endswith("jpg"):
             imageList.append(os.path.join(imageFolder, file_))
 
 
@@ -54,9 +54,9 @@ for num, imageName in enumerate(imageList):
         collage_width = image_width * cols + (space * (cols - 1))
         collage_height = image_height * rows + (space * (rows - 1))
 
-    new_im = Image.new('RGB', (collage_width, collage_height), spaceColor)
+    new_im = Image.new("RGB", (collage_width, collage_height), spaceColor)
 
-    resultImage = os.path.join(imageFolderVariations, str(num) + '_collage.jpg')
+    resultImage = os.path.join(imageFolderVariations, str(num) + "_collage.jpg")
 
     ims = []
     if position_original_first:
@@ -82,8 +82,8 @@ for num, imageName in enumerate(imageList):
         for row in range(rows):
             new_im.paste(ims[i], (x, y))
             i += 1
-            y += (image_height + space)
-        x += (image_width + space)
+            y += image_height + space
+        x += image_width + space
 
         if outerFrame:
             y = space
@@ -91,3 +91,5 @@ for num, imageName in enumerate(imageList):
             y = 0
 
     new_im.save(resultImage)
+
+    print(resultImage)
