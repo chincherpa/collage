@@ -2,6 +2,7 @@ import os
 import random
 from PIL import Image
 
+# git push-test
 currentPath = os.path.dirname(__file__)
 imageFolder = os.path.join(currentPath, "images")
 resultImage = os.path.join(currentPath, "collage.jpg")
